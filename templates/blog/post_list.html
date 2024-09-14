@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пости</title>
+</head>
+<body>
+    <h1>Список постів</h1>
+    <ul>
+        {% for post in post_list %}
+        <li>
+            <h2>{{ post.title }}</h2>
+            <p>Опубліковано о: {{ post.published_date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
