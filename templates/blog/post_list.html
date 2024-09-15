@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "blog/index.html" %}
+{% block title %}
     <title>Пости</title>
-</head>
-<body>
+{% endblock %}
+{% block content %}
     <h1>Список постів</h1>
     <ul>
         {% for post in post_list %}
-        <li>
-            <h2><a href='/post/{{ post.id }}'>{{ post.title }}</ahref></h2>
-            <p>Опубліковано о: {{ post.published_date }}</p>
-        </li>
+            <a href='{% url "post" post.id %}' style="text-decoration: none">
+                <h2>{{ post.title }}</h2>
+                <p>Опубліковано о: {{ post.published_date }}</p>
+            </a>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

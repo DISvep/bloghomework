@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends "blog/index.html" %}
+{% block title %}
     <title>{{ post.title }}</title>
-</head>
-<body>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <p>Дата публікації: {{ post.published_date }}</p>
-    <p>Автор: {{ post.author.name }}</p>
-</body>
-</html>
+{% endblock %}
+{% block content %}
+    <h1>Пост {{ post.title }}</h1>
+    <h4>{{ post.content }}</h4>
+    <h3>Дата публікації: {{ post.published_date }}</h3>
+    <a href='{% url "author" post.author.id %}' style="text-decoration: none">
+        <h2> Автор: {{ post.author.name }} </h2>
+    </a>
+{% endblock %}
