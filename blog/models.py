@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from datetime import timedelta
 
 
 # Create your models here.
@@ -20,4 +22,14 @@ class Post(models.Model):
         return self.title
 
     def published_recently(self):
-        pass
+        return timezone.now() - self.published_date <= timedelta(days=7)
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.DO_NOTHING)
+    author_name = models.CharField(max_length=50)
+    text = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.author_name} - {self.created_date}"
