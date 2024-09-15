@@ -1,8 +1,16 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Author
 
 
 # Create your views here.
+
+def index(request):
+    return render(
+        request,
+        'blog/main.html'
+    )
+
+
 def post_list(request):
     posts = Post.objects.all()
     context = {
@@ -25,3 +33,30 @@ def post(request, post_id):
         "blog/post.html",
         context=context
     )
+
+
+def author(request, author_id):
+    author = Author.objects.get(id=author_id)
+    posts = Post.objects.filter(author=author)
+    context = {
+        "author": author,
+        "posts": posts
+    }
+    return render(
+        request,
+        "blog/author.html",
+        context=context
+    )
+
+
+def author_list(request):
+    authors = Author.objects.all()
+    context = {
+        'author_list': authors
+    }
+    return render(
+        request,
+        'blog/author_list.html',
+        context=context
+    )
+

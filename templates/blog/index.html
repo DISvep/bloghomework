@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+    <nav>
+        <a href="/post_list">
+            Список постів
+        </a>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/author_list">
+            Список авторів
+        </a>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
